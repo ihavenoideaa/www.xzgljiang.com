@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" href="./assets/img/logo.png" type="image/*" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/APlayer.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/highlight.github.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
+	<!--引入字体，全局字体使用-->
+	<link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+
+    <title>杂物间 | 评论</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <!--<div class="title">Memos</a></div>-->
+            <div class="pages">
+                    <a href="https://www.xzgljiang.com" target="_blank" rel="noopener noreferrer" >我的主页</a>&nbsp;
+                    <a href="https://blog.xzgljiang.com" target="_blank" rel="noopener noreferrer" >博客</a>&nbsp;
+                    <a href="https://www.xzgljiang.com/message" target="_blank" rel="noopener noreferrer" >留言板</a>
+            </div>
+        </div>
+        <div><small><span id="yiyan" class="yiyan">“<span id="hitokoto">人生最大的遗憾,就是在最无能为力的时候遇到一个想要保护一生的人.</span>”</span></small><span  class='theme-toggle'>  </span></div>
+    </header>
+    <section id="main" class="container">
+        <h1>💬Comment</h1>
+        <blockquote class="intro">
+		<div class="intro-flex">
+		<p><div class="intro-left left">✍️ Anything you want to say</div><div class="intro-right right""> <a class="returnA"  href="#" onclick="javascript:history.back();return false;">返回↩️</a></div></p>
+        </div></blockquote>
+        <div id="memos" class="memos" style="min-height:12rem">
+            <!-- Memos Container -->
+        </div>
+		<div>
+		<div id="tcomment"></div>
+		<script>
+		    // 获取上个页面通过 url 传递的参数 id 的值
+			function getParam(name){var params = new URLSearchParams(window.location.search);return params.get(name);} 
+			window.TWIKOO_MAGIC_PATH= 'memos' + getParam('id');
+		</script>
+		<script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
+		<script>
+			twikoo.init({
+				envId: 'https://twikoo.une.xzgljiang.com/',  //这里填写自己的envId
+				el: "#tcomment",
+				lang: 'zh-CN',
+				region: 'ap-guangzhou',  //我的区域是广州，可以不填，默认是ap-shanghai
+				path: window.TWIKOO_MAGIC_PATH||window.location.href
+        });
+    </script>
+</div>
+    </section>
+    <footer class="markdown-body footer">
+		<p>
+		<small>
+		Copyright &copy 2023 xzgl.&ensp;<span style="white-space: nowrap;">Powered by <a title="github" href="https://github.com/eallion/memos.top" target="_blank" rel="noopener noreferrer" class="power"><b>🌈memos.top</b></a></span>
+		<br/>
+		<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="icp">粤ICP备2023008974号</a>
+</small>	   
+</p>
+
+    </footer>
+    <!-- 修改自己的 Memos 设置-->
+    <script type="text/javascript">
+        var memos = {
+            host: 'https://memos.xzgljiang.com/',  //修改为自己部署 Memos 的网址，末尾有 / 斜杠
+            limit: '3',  //默认每次显示 10条
+            creatorId: '1',  //默认为 101用户 https://demo.usememos.com/u/101
+            domId: '#memos',  //默认为 #memos
+            username: 'xzgl',  //发布者 ID 自定义
+            name: 'Jiang',  //发布者全称自定义
+        }
+    </script>
+    <script type="text/javascript" src="assets/js/lazyload.min.js?v=17.8.3"></script>
+    <script type="text/javascript" src="assets/js/marked.min.js?v=4.2.2"></script>
+    <script type="text/javascript" src="assets/js/view-image.min.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/pangu.min.js?v=4.0.7"></script> -->
+    <script type="text/javascript" src="assets/js/moment.min.js?v=2.29.4"></script>
+    <script type="text/javascript" src="assets/js/moment.twitter.js"></script>
+    <script type="text/javascript" src="assets/js/APlayer.min.js"></script>
+    <script type="text/javascript" src="assets/js/Meting.min.js"></script>
+    <script type="text/javascript" src="assets/js/highlight.min.js"></script>
+    <script type="text/javascript" src="assets/js/detail.js"></script>
+    <script>hljs.highlightAll();</script>
+	
+	 <!--一言API-->
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+</body>
+
+</html>

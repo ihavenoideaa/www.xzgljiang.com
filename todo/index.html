@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		div#todolist {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 1rem;
+		}
+		.list_item {
+			display: inline-block;
+			width: calc(50% - 3rem);
+			background: var(--color-text-bg);
+			border-radius: 12px;
+			padding: 10px 1rem 1.2rem;
+			margin: 0.5rem;
+			margin-bottom: 1rem;
+		}
+		.list_item h3 {
+			margin: 0 0 0.3rem 0;
+			border-bottom: var(--todo-border);
+			font-weight: lighter;
+		}
+		.list_item h3 a {
+		    color:#2196F3;
+		    text-decoration: none;
+		}
+		.list_item h3 a:hover {
+		    color:#2196f3c9;
+		}
+		.list_item hr{
+		    margin: 0 0 0.85rem 0;
+		    border: none;
+            border-top: 1px solid #c5c2c2;
+		}
+		.dark-theme .list_item hr{border-top: 1px solid #464545;}
+		.list_item .items {
+			font-size: 17px;
+			padding: 0 !important;
+			margin: 0;
+		}
+		.list_item .one_item{
+			margin: 0.35rem 0 0 0 !important;
+			border-bottom: var(--todo-border);
+		}
+		.list_item .one_item::marker {
+		content: none;
+		}
+		.list_item .achieve {
+			opacity: .8;
+			text-decoration: line-through;
+		}
+		@media screen and (max-width: 900px) {
+		div#todolist {
+			margin: 1rem 5px 0;
+		}
+		}
+		@media screen and (max-width: 768px) {
+		.list_item{
+			width: 95%;
+		}
+		}
+		.list_item .squarebox{
+			margin-right:0.3rem;
+			font-size: 1.2rem;
+			color: #515a56;
+		}
+		.list_item .achieve .squarebox{
+			color: #00d26a;
+		}
+		body{overflow-x:hidden}.bg-container{position:absolute;top:40%;width:100%}@keyframes rotate{from{transform:rotate(0)}from{transform:rotate(360deg)}}#shape1,#shape10,#shape8,#shape9{transform-box:fill-box;transform-origin:center;-webkit-animation:rotate-center 2s cubic-bezier(.445,.05,.55,.95) infinite alternate both;animation:rotate-center 2s cubic-bezier(.445,.05,.55,.95) infinite alternate both}#cir1,#cir2,#cir3{transform-box:fill-box;transform-origin:center;-webkit-animation:rotate-scale-down-diag-2 2s linear infinite both;animation:rotate-scale-down-diag-2 2s linear infinite both}#cir4,#cir5,#cir6{transform-box:fill-box;transform-origin:center;-webkit-animation:rotate-scale-down-diag-2 1s linear infinite both;animation:rotate-scale-down-diag-2 1s linear infinite both}@-webkit-keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate-center{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes rotate-scale-down-diag-2{0%{-webkit-transform:scale(1) rotate3d(-1,1,0,0deg);transform:scale(1) rotate3d(-1,1,0,0deg)}50%{-webkit-transform:scale(.5) rotate3d(-1,1,0,180deg);transform:scale(.5) rotate3d(-1,1,0,180deg)}100%{-webkit-transform:scale(1) rotate3d(-1,1,0,360deg);transform:scale(1) rotate3d(-1,1,0,360deg)}}@keyframes rotate-scale-down-diag-2{0%{-webkit-transform:scale(1) rotate3d(-1,1,0,0deg);transform:scale(1) rotate3d(-1,1,0,0deg)}50%{-webkit-transform:scale(.5) rotate3d(-1,1,0,180deg);transform:scale(.5) rotate3d(-1,1,0,180deg)}100%{-webkit-transform:scale(1) rotate3d(-1,1,0,360deg);transform:scale(1) rotate3d(-1,1,0,360deg)}}
+
+	</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" href="../memos/assets/img/logo.png" type="image/*" />
+    <link href="../memos/assets/css/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
+	<!--引入字体，全局字体使用-->
+	<link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
+    <title>杂物间 | 待办清单</title>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <div class="pages">
+                    <a href="https://www.xzgljiang.com" target="_blank" rel="noopener noreferrer" >我的主页</a>&nbsp;
+                    <a href="https://blog.xzgljiang.com" target="_blank" rel="noopener noreferrer" >博客</a>&nbsp;
+                    <a href="https://www.xzgljiang.com/memos" target="_blank" rel="noopener noreferrer" >杂物间</a>
+                    <a href="https://www.xzgljiang.com/message" target="_blank" rel="noopener noreferrer" >留言板</a>
+            </div>
+        </div>
+        
+        <div><small><span id="yiyan" class="yiyan">“<span id="hitokoto">人生最大的遗憾,就是在最无能为力的时候遇到一个想要保护一生的人.</span>”</span></small><span  class='theme-toggle'>  </span></div>
+    </header>
+    <div class="bg-container"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="500px"><path id="shape1" fill-rule="evenodd" fill="rgb(35, 23, 123)" d="M-0.011,9.318 L8.682,6.988 L11.011,15.682 L2.318,18.011 L-0.011,9.318 Z"></path><path id="shape8" fill-rule="evenodd" fill="rgb(35, 23, 123)" d="M607.694,164.319 L612.680,161.693 L615.306,166.680 L610.320,169.305 L607.694,164.319 Z"></path><path id="shape9" fill-rule="evenodd" fill="rgb(93, 203, 250)" d="M667.343,205.646 L679.152,213.179 L671.620,224.988 L659.810,217.456 L667.343,205.646 Z"></path><path id="shape10" fill-rule="evenodd" fill="rgb(93, 203, 250)" d="M915.839,-0.008 L924.997,5.833 L919.156,14.991 L909.998,9.150 L915.839,-0.008 Z"></path><path id="cir6" fill-rule="evenodd" fill="rgb(35, 23, 123)" d="M989.000,93.000 C993.418,93.000 997.000,96.582 997.000,101.000 C997.000,105.418 993.418,109.000 989.000,109.000 C984.582,109.000 981.000,105.418 981.000,101.000 C981.000,96.582 984.582,93.000 989.000,93.000 Z"></path><path id="cir5" fill-rule="evenodd" fill="rgb(35, 23, 123)" d="M1165.000,8.000 C1167.761,8.000 1170.000,10.238 1170.000,13.000 C1170.000,15.761 1167.761,18.000 1165.000,18.000 C1162.239,18.000 1160.000,15.761 1160.000,13.000 C1160.000,10.238 1162.239,8.000 1165.000,8.000 Z"></path><path id="cir4" fill-rule="evenodd" fill="rgb(93, 203, 250)" d="M1303.500,118.000 C1304.881,118.000 1306.000,119.119 1306.000,120.500 C1306.000,121.880 1304.881,123.000 1303.500,123.000 C1302.119,123.000 1301.000,121.880 1301.000,120.500 C1301.000,119.119 1302.119,118.000 1303.500,118.000 Z"></path><path id="cir3" fill-rule="evenodd" fill="rgb(93, 203, 250)" d="M61.000,112.000 C62.657,112.000 64.000,113.343 64.000,115.000 C64.000,116.657 62.657,118.000 61.000,118.000 C59.343,118.000 58.000,116.657 58.000,115.000 C58.000,113.343 59.343,112.000 61.000,112.000 Z"></path><path id="cir2" fill-rule="evenodd" fill="rgb(74, 92, 246)" d="M265.500,-0.000 C271.299,-0.000 276.000,4.701 276.000,10.500 C276.000,16.299 271.299,21.000 265.500,21.000 C259.701,21.000 255.000,16.299 255.000,10.500 C255.000,4.701 259.701,-0.000 265.500,-0.000 Z"></path><path id="cir1" fill-rule="evenodd" fill="rgb(35, 23, 123)" d="M185.500,131.000 C187.985,131.000 190.000,133.015 190.000,135.500 C190.000,137.985 187.985,140.000 185.500,140.000 C183.015,140.000 181.000,137.985 181.000,135.500 C181.000,133.015 183.015,131.000 185.500,131.000 Z"></path></svg></div>
+
+    <section id="main" class="container">
+        <h1>🛫️ 待办清单</h1>
+        <blockquote class="intro">
+		<div class="intro-flex">
+		<p><div class="intro-left left">☑️ 我的一些计划</div>	<div class="intro-right right"">还有 <span style="font-weight:bold;color:var(--color-total)" id="todoTotal">0</span> 条等待完成 ✔️</div></p>
+        </div></blockquote>
+
+		<div id="todolist" style="margin-left:-1rem"></div>
+		
+    </section>
+    <footer class="markdown-body footer">
+		<p>
+		<small>
+		Copyright &copy 2023 xzgl.&ensp;<span style="white-space: nowrap;">Powered by <a title="github" href="https://github.com/eallion/memos.top" target="_blank" rel="noopener noreferrer" class="power"><b>🌈memos.top</b></a></span>
+		<br/>
+		<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="icp">粤ICP备2023008974号</a>
+        </small>	   
+        </p>
+    </footer>
+	 <!--一言API-->
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+	
+	<script>
+	// 瀑布流函数，不用管
+	function waterfall(t){function e(t,e){var n=window.getComputedStyle(e);return parseFloat(n["margin"+t])||0}function n(t){return t+"px"}function r(t){return parseFloat(t.style.left)}function o(t){return t.clientWidth}function l(t){return function(t){return parseFloat(t.style.top)}(t)+function(t){return t.clientHeight}(t)+e("Bottom",t)}function i(t){return r(t)+o(t)+e("Right",t)}function u(t){t=t.sort((function(t,e){return l(t)===l(e)?r(e)-r(t):l(e)-l(t)}))}function a(e){o(t)!=h&&(e.target.removeEventListener(e.type,arguments.callee),waterfall(t))}"string"==typeof t&&(t=document.querySelector(t));var s=[].map.call(t.children,(function(t){return t.style.position="absolute",t}));t.style.position="relative";var f=[];s.length&&(s[0].style.top="0px",s[0].style.left=n(e("Left",s[0])),f.push(s[0]));for(var p=1;p<s.length;p++){var c=s[p-1],y=s[p];if(!(i(c)+o(y)<=o(t)))break;y.style.top=c.style.top,y.style.left=n(i(c)+e("Left",y)),f.push(y)}for(;p<s.length;p++){u(f);y=s[p];var d=f.pop();y.style.top=n(l(d)+e("Top",y)),y.style.left=n(r(d)),f.push(y)}u(f);var v=f[0];t.style.height=n(l(v));var h=o(t);window.addEventListener?window.addEventListener("resize",a):document.body.onresize=a}
+	
+	// 清单函数
+	todolist();
+	function todolist() {
+		fetch('https://memos.xzgljiang.com/api/memo?creatorId=1&tag=TODO').then(res => res.json()).then(data => { // 注意替换链接和ID
+			// 获取并处理数据
+			data = data.data
+			let box = document.getElementById('todolist')
+			let count = 0;
+			data.forEach(item => {
+				// 处理数据
+				let content = item.content,
+					title = content.match(/\[(.*?)\]/g)[0].replace(/\[(.*?)\]/,'$1');
+				
+				let uncheckedList = content.split("- [ ]"); // 将待办事项以"- [ ] "为分隔符分割成数组
+				if (uncheckedList.length > 1) {
+					count += uncheckedList.length - 1; // 统计未勾选的事项数量
+				}
+				
+				// 去掉多余内容，替换清单内容
+				content = content.replace(/#.*\s/g, '').replace(/(-\s\[\s\]\s)(.*)/g, `<div class="one_item"><i class="far fa-square squarebox"></i>$2</div>`).replace(/(-\s\[x\]\s)(.*)/g, `<div class="one_item achieve"><i class="fas fa-check-square squarebox"></i>$2</div>`);
+				// 渲染数据
+				let div = document.createElement('div');
+				div.className = 'list_item';
+				div.innerHTML = `<h3><a target="_blank" href="https://memos.xzgljiang.com/m/${item.id}">${title}</a></h3><hr><div class="items">${content}</div>`;
+				box.appendChild(div);
+			});
+			waterfall('#todolist');
+			
+			var todoCount = document.getElementById('todoTotal');
+            todoCount.innerHTML = count;
+			
+		}).catch()
+	}
+	</script>
+	
+	<script>
+	const localTheme = window.localStorage && window.localStorage.getItem("theme");
+	const themeToggle = document.querySelector(".theme-toggle");
+	if (localTheme) {
+		document.body.classList.remove("light-theme", "dark-theme");
+		document.body.classList.add(localTheme);
+	}
+	themeToggle.addEventListener("click", () => {
+		const themeUndefined = !new RegExp("(dark|light)-theme").test(document.body.className);
+		const isOSDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		if (themeUndefined) {
+			if (isOSDark) {
+				document.body.classList.add("light-theme");
+			} else {
+				document.body.classList.add("dark-theme");
+			}
+		} else {
+			document.body.classList.toggle("light-theme");
+			document.body.classList.toggle("dark-theme");
+		}
+		window.localStorage &&
+			window.localStorage.setItem(
+				"theme",
+				document.body.classList.contains("dark-theme") ? "dark-theme" : "light-theme",
+			);
+	});
+	</script>
+</body>
+</html>
