@@ -44,7 +44,7 @@
 			border-bottom: var(--todo-border);
 		}
 		.list_item .one_item::marker {
-		content: none;
+			content: none;
 		}
 		.list_item .achieve {
 			opacity: .8;
@@ -143,7 +143,10 @@
 				}
 				
 				// 去掉多余内容，替换清单内容
-				content = content.replace(/#.*\s/g, '').replace(/(-\s\[\s\]\s)(.*)/g, `<div class="one_item"><i class="far fa-square squarebox"></i>$2</div>`).replace(/(-\s\[x\]\s)(.*)/g, `<div class="one_item achieve"><i class="fas fa-check-square squarebox"></i>$2</div>`);
+				content = content.replace(/#.*\s/g, '')
+								 .replace(/(-\s\[\s\]\s)(.*)/g, `<div class="one_item"><i class="far fa-square squarebox"></i>$2</div>`)
+								 .replace(/(-\s\[x\]\s)(.*)/g, `<div class="one_item achieve"><i class="fas fa-check-square squarebox"></i>$2</div>`)
+								 .replace(/\[(.*?)\]\((.*?)\)/g, '<a class="" href="$2" target="_blank">$1</a>');
 				// 渲染数据
 				let div = document.createElement('div');
 				div.className = 'list_item';
